@@ -9,10 +9,10 @@ Nanote simple flat-file blog script
 	1. Переименуйте rename.htaccess в .htaccess
 
 Изменения относительно основной ветки от muhas (muhas@plain-man.ru)
+        * фикс пагинации ещё не попавший в svn nanote
+
 Добавленные плагины:
 	1. nanoshop - плагин превращающий любую записись в товар (подробнее http://plain-man.ru/pg/nanoshop)
 	2. disqus - плагин для интеграции с внешней системой комментирований disqus 
 	3. nanostat - наипростейшая статистика 
 	
-Модификаци:
-	* фикс пагинации ещё не попавший в svn nanote
