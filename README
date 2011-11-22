@@ -8,7 +8,7 @@ Nanote simple flat-file blog script
 Для включения ЧПУ:
 	1. Переименуйте rename.htaccess в .htaccess
 
-Изменения относительно основной ветки от muhas (muhas@plain-man.ru)
+Изменения относительно основной ветки nanote
         * фикс пагинации ещё не попавший в svn nanote
 
 Добавленные плагины:
