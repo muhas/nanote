@@ -1615,8 +1615,9 @@ if(isset($_v['act']))
 // универсальный rss
 if(strstr($_v['act'], 'rss'))
 {
-	if($_v['act'] == "rss-feed")  header('Location:http://feeds.feedburner.com/plain-man/xumt');
-	if($_v['act'] == "rss-full")  header('Location:http://feeds.feedburner.com/plain-man/full');
+	// пример добавления фидов. пока такой костыль :(
+	//if($_v['act'] == "rss-feed")  header('Location:http://feeds.feedburner.com/plain-man/xumt');
+	//if($_v['act'] == "rss-full")  header('Location:http://feeds.feedburner.com/plain-man/full');
 	header('Content-type: application/xml');
 
 	echo "<?xml version=\"1.0\" encoding=\"".$_s['enc']."\"?>\n<rss version=\"2.0\">\n<channel>\n<title>".$_s['bname']."</title>\n<link>".$_s['url']."</link>\n<description></description>\n<language>ru</language>\n";
