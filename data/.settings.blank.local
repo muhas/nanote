@@ -14,9 +14,9 @@ a:6:{s:5:"alias";a:2:{s:11:"mal-da-udal";s:10:"1254942727";i:1254942727;s:11:"ma
 <input type="hidden" name="act" value="sw" />
 <input type="text" name="sw" value=" поиск " onfocus="if(this.value==' поиск ')this.value=''" onBlur="this.value=' поиск '" />
 </form>";}i:4;a:2:{i:0;s:14:"Google AdSense";i:1;s:300:"<script type="text/javascript"><!--
-google_ad_client = "ca-pub-3824691812008975";
+google_ad_client = "ca-pub-3830576696451252";
 /* nanote install */
-google_ad_slot = "9592489308";
+google_ad_slot = "9030783604";
 google_ad_width = 200;
 google_ad_height = 200;
 //-->

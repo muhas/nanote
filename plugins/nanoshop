@@ -1,6 +1,6 @@
 <?php
 //nanoshop:наномагазин превращающий посты в товыры //
-//0.3 test3,muhas//
+//0.3 test4,muhas//
 
 
 $plugins['template.post.list'][] = 'shopshow';
