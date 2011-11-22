@@ -1,0 +1,6 @@
+<h2>Страницы</h2><ul align=left>
+<?php
+if($pgs=pglist(0,'<li> [%date%] <a href="%link%">%title%</a>')) echo $pgs;
+else echo $_l['empty'];
+?>
+</ul>

@@ -1,0 +1,73 @@
+<?php
+//disqus:Сторонния комментарии с помощь системы disqus //
+//0.3.1,muhas//
+
+$plugins['template.post.list'][] = 'postmv';
+$plugins['template.post.single'][] = 'postmv';
+$plugins['template.form-comment'][] = 'printcomm';
+$plugins['action.disqus'][] = 'disqus_conf';
+$plugins['template.index'][] = 'disquscomm';
+
+function postmv() {
+	global $_l, $pst, $_loc;
+	if ($_loc['comments'][$pst['id']] == 1) {
+		$_l['commts'] = '<a href="'.$pst['link'].'#disqus_thread" data-disqus-identifier="'.$pst['id'].'">Комментарии</a>';
+	}  else {
+		$_l['commts'] = $_l['freeze'];
+	}
+}
+
+function printcomm() {
+	global $pst, $_v, $_loc, $_s;
+	if (($_s['cmton'] && (isset($_loc['comments'][$_v['p']]) && $_loc['comments'][$_v['p']]))) {
+?>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = '<?php echo $_loc['disqus_shortname'] ?>';
+var disqus_identifier = '<?php echo $pst['id'];?>';
+var disqus_url = '<?php  echo $pst['link'];?>';
+var disqus_title = '<?php echo htmlspecialchars($pst['title']); ?>';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Включите пожалуйста JavaScript для просмотра комментариев и возможности их написания с помощью <a href="http://disqus.com/?ref_noscript">Disqus</a>.</noscript>	
+<?php	
+	$_loc['comments'][$_v['p']] = 0;
+	} 
+}
+
+function disquscomm() {
+	global $_intpl, $_loc;
+	$_intpl['infooter'] .= "<script type=\"text/javascript\">
+var disqus_shortname = '".$_loc['disqus_shortname']."'; 
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+document.getElementsByTagName('BODY')[0].appendChild(s);
+</script>";
+//<script async="" type="text/javascript" src="http://'.$_loc['disqus_shortname'].'.disqus.com/count.js"></script>
+}
+
+function disqus_conf() {
+	global $_s, $_loc, $_v;
+	if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+		if(!isset($_POST['save'])) {
+			echo '<form action="" method="post">';
+			echo '<input name="dshot" value="'.$_loc['disqus_shortname'].'" /><br/>';
+			echo '<br /><input name="save" type="hidden" value="on" /><input type="submit" /></form>';
+			exit;
+		} else {
+			$_loc['disqus_shortname']=$_POST['dshot'];
+			fsave($_POST['datadir'].'/.settings.local', 'w+', serialize($_loc));
+		}
+		@$_s['pglk'] .=
+			'<script>
+				var notify_msg = "Настройки для disqus сохранены";
+			</script>';	
+	}
+}
+
+?>

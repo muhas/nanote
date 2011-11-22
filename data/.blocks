@@ -1,0 +1,49 @@
+<?php
+// Blocks mod by muhas
+// http://muhas.ru, <muhas.m@gmail.com>
+
+$blocks = array();
+
+if (isset($_SESSION['adm']) || !trim($_s['pass'])) { echo '<center><h2>Управление блоками</h2></center>';
+
+if(isset($_POST['save'])) {
+	$tmp = array();
+	foreach($_POST['b'] as $k=>$v) {
+		$tmp[$v] = $_loc['block'][$k];
+
+	}
+	unset($tmp['']);
+	$_loc['block']=$tmp;
+	fsave($_POST['datadir'].'/.settings.local', 'w+', serialize($_loc));
+}
+
+
+echo '<form action="" method="post">';
+
+foreach($_tplin as $kb=>$vb)
+{
+	if(stristr($kb, 'block'))
+	{
+		$blocks[str_replace('-block', '', $kb)] = '';
+	}
+}
+
+$blocks = $blocks + $_loc['block'];
+
+foreach ($blocks as $key=>$value) {
+	echo '<input name="b['.$key.']" value="'.$key.'" '.(isset($_tplin[$key.'-block']) ? 'disabled="disabled"' : '').' /><br/>';
+
+	echo "<ul>";
+
+	if(isset($_loc['block'][$key]) && is_array($_loc['block'][$key]))
+	{
+		foreach ($_loc['block'][$key] as $k=>$v) {
+			echo '<li>'.$v[0].' &mdash; <a id="ed" href="'.alk('bk',$key."_".$k).'" title="Редактировать">E</a> <a id="de" title="Удалить" href="'.alk('de',$key."_".$k).'" onClick="return confirm(\'Подтвердите удаление ['.$v[0].']\')">X</a></li>';
+		}
+		echo '<li><a href="'.alk('bk', $key.'_'.sizeof($_loc['block'][$key])).'">Новый</a></li></ul><br>';
+	} else echo '<li><a href="'.alk('bk', $key.'_0').'">Новый</a></li></ul><br>';
+}
+echo '<br /><input name="save" type="hidden" value="on" /><input type="submit" /></form>';
+
+
+} ?>

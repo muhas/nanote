@@ -1,0 +1,44 @@
+<?php
+//nanostat:простые пользователи//
+//0.1,muhas//
+
+$plugins['template.post.single'][] = 'nanostats';
+$plugins['action.nanostat'][] = 'nanostat';
+
+function nanostats() {
+	global $_s, $_v, $_loc;
+	if (!isset($_SESSION['adm'])) {
+		$nanofile = @unserialize(file_get_contents($_POST['datadir'].'/.settings.nanostat'));
+		$nanofile[$_v['p']] = $nanofile[$_v['p']]+1;
+		arsort($nanofile);
+		fsave($_POST['datadir'].'/.settings.nanostat', 'w+', serialize($nanofile));
+		//nanobest();
+	}
+}
+function nanobest($num=5,$tpl='<a href="%link%" rel="nofollow">%name%</a><br>') {
+	$nanofile = @unserialize(file_get_contents($_POST['datadir'].'/.settings.nanostat'));
+	$i = 0;	
+	foreach ($nanofile as $k => $v) {
+		$i = ++$i;
+		$tmpstat = ptinfo($k);
+		echo str_replace(array('%link%', '%name%'), array($tmpstat['link'], $tmpstat['title']), $tpl);
+		$tmpstat="";
+		if ($i == $num) {break;}
+	}
+}
+
+function nanostat() {
+	if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+		$nanofile = @unserialize(file_get_contents($_POST['datadir'].'/.settings.nanostat'));
+		echo '<h2>Статистика просмотра записей</h2>';
+		foreach ($nanofile as $k => $v) {
+			$tmpstat = ptinfo($k);
+			echo '<div style="border-bottom:1px solid silver;padding:5px;width:600px;"><a href="'.$tmpstat['link'].'">'.$tmpstat['title'].'</a> <div style="float:right;">просмотры: '.$v.'</div></div>' ;
+			$tmpstat="";
+		}
+		exit;
+	}
+		
+}
+
+?>

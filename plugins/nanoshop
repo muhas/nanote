@@ -1,0 +1,134 @@
+<?php
+//nanoshop:наномагазин превращающий посты в товыры //
+//0.3 test3,muhas//
+
+
+$plugins['template.post.list'][] = 'shopshow';
+$plugins['template.post.single'][] = 'shopshow';
+$plugins['template.form-post'][] = 'shoprice';
+$plugins['template.index'][] = 'shopajax';
+$plugins['action.nanoshop'][] = 'nanoshop';
+
+function shoprice() {
+	global $extra_options, $pst;
+	$extra_options['price']['title'] = "Цена";
+}
+function  shopshow() {
+	global $pst, $_loc, $_l, $_s;
+	if(!isset($_s['shopvalut'])) $_s['shopvalut'] = "р.";
+	if(!empty($_loc['input_price'][$pst['id']])){
+		$pst['price'] = $_loc['input_price'][$pst['id']];
+		$pst['addform'] = '
+			<form action="'.$_s['url'].'/cart/cart.php" class="cartform" method="post">
+			<span class="nanoprice">Цена: <span>'.$pst['price'].'</span> '.$_s['shopvalut'].'</span>
+				<input type="hidden" name="name" value="'.$pst['title'].'" />
+				<input type="hidden" name="id" value="'.$pst['id'].'" />
+				<input type="hidden" class="oldcart" name="oldcart" value="oldcart" />
+				<input type="hidden" name="addnew" value="" />
+				<input type="text" class="cartcount" name="number" value="1" size="3" />
+				<input type="submit" name="submit" value=" " class="addcart" />
+			</form>
+		';
+		$pst['text'] = $pst['addform'].$pst['text'];
+	}
+}
+function shopajax() {
+	global $_intpl, $_s;
+	if(!isset($_s['shoptpl'])) $_s['shoptpl'] = "default.css";
+	if($_s['jquery'] == 'no') $_intpl['inheader'] .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>';
+	$_intpl['inheader'] .= '
+	<script src="'.$_s['url'].'cart/jquery.form.js" type="text/javascript"></script>
+	<script src="'.$_s['url'].'cart/jquery.Storage.js" type="text/javascript"></script>
+	<link href="'.$_s['url'].'cart/'.$_s['shoptpl'].'" media="screen" rel="stylesheet" type="text/css" />
+	';
+	$_intpl['infooter'] = '
+		<div id="addcart">
+		
+			<div class="popup">
+				<div class="cont">
+					<div class="close"></div>
+					<div class="cart">
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		<div id="cart_overlay"></div>
+		<script>
+		$(document).ready(function(){              // по окончанию загрузки страницы
+			var cartform = { 
+				target:        "#addcart .cart",   
+				beforeSubmit:  addcartBefore 
+			}; 	
+			$(".cartform").ajaxForm(cartform);
+			function addcartBefore() {
+				$("#addcart .cart").html(\'<div class="cartwait"></div>\');
+				$("#cart_overlay").show();
+				$("#addcart").fadeIn(700).css({
+					left: ($(window).width() - $("#addcart .popup").outerWidth())/2,
+					top: $(window).scrollTop() + 120
+				});
+			}
+			$("#addcart .close, #cart_overlay").click(	function () {
+				$("#addcart").fadeOut();
+				var newcart = $.Storage.get("cart");
+				$("input.oldcart").val(newcart);
+				$("#cart_overlay").hide();
+			});
+
+
+			var oldcart = $.Storage.get("cart");
+			$("input[value=\"oldcart\"]").val(oldcart);
+
+			setInterval(function() {var oldcart = $.Storage.get("cart");$("input.oldcart").val(oldcart);}, 3000);
+		});
+	</script>
+	';
+}
+
+function nanoshop() {
+	global $_s, $_v, $_glob;
+	if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+		if(!isset($_POST['save'])) {
+			if(!isset($_s['shopvalut'])) $_s['shopvalut'] = "р.";
+			echo '<form action="" method="post">';
+			echo 'Валюта <input name="nanovalut" value="'.$_s['shopvalut'].'" /><br/>';
+			echo '<br />';
+			
+			echo 'Шаблон наномагазина <select size="1" name="shoptpl">';
+
+			// шаблоны
+			$d = dir('cart');
+			while (false !== ($et = $d->read())){
+			echo $et;
+				if (stristr($et, '.css')){
+					if($et == $_s['shoptpl'] || (!isset($_s['shoptpl']) && $et == "default.css")) {
+						$c = 'selected';
+					}else {
+						$c='';
+					}
+					//if(!isset($_s['shoptpl']) && $et == "nanoshop.css") {$c = 'selected';}
+					echo '<option value="'.$et.'" '.$c.'>'.$et.'</option>';
+				}
+			}
+			$d->close();
+			echo '</select><br>';
+			echo 'Подключен ли Jquery в шаблоне?<br>';
+			if($_s['jquery'] != 'yes'){$n = 'checked';}else {$y = 'checked';}
+			echo '<input type="radio" name="jquery" value="yes" '.$y.'> Да<br><input type="radio" name="jquery" value="no" '.$n.'> Нет (Подключит jquery)<br>';
+			echo '<input name="save" type="hidden" value="on" /><input type="submit" /></form>';
+			exit;
+		} else {
+			$_glob['_sshopvalut']=$_POST['nanovalut'];
+			$_glob['_sshoptpl']=$_POST['shoptpl'];
+			$_glob['_sjquery']=$_POST['jquery'];
+			fsave($_POST['datadir'].'/.settings.global', 'w+', serialize($_glob));
+		}
+		@$_s['pglk'] .=
+			'<script>
+				var notify_msg = "Настройки nanoshop сохранены";
+			</script>';	
+	}
+}
+
+?>

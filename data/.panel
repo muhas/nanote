@@ -1,0 +1,199 @@
+<?php
+
+if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+
+	echo '<center><h2>Установки</h2></center>';
+
+	unset($_s['d']); unset($_s['slf']); unset($_s['title']);
+	unset($_s['plname']); unset($_s['lang']); unset($_s['sav_dir']); unset($_s['ver']);
+
+	// исключения системных переменных
+	$exp = array('curl', 'pglk');
+?>
+<script>
+function checkup(act)
+{
+	document.getElementById(act).innerHTML = 'Подождите, задача выполняется...';
+	var head = document.getElementsByTagName("head")[0];
+	script=document.createElement('script');
+	script.type='text/javascript';
+	script.src='<?php echo $_s['url']; ?>index.php?majax=' + act;
+	head.appendChild(script);
+}
+</script>
+<form name="" action="<?php echo pgk('.panel'); ?>" method="post">
+<table align=center class="settings">
+<tr><td id="checkup"><a href="javascript: checkup('checkup')">Проверить новую версию</a></td></tr>
+<tr><td id="doping"><a href="javascript: checkup('doping')">Пинговать пинг-сервисы</a></td></tr>
+<tr><td id="addsitemap"><a href="javascript: checkup('addsitemap')">Уведомить об обновлении sitemap</a></td></tr>
+<tr><td id="makethumbs"><a href="javascript: checkup('makethumbs')">Пересоздать миниатюры (может занять длительное время)</a></td></tr>
+<?php
+// страницы-расширения
+$d = dir('data');
+while (false !== ($et = $d->read()))
+{
+	if(substr($et,0,2) == '._')
+	{
+		$mods[] = $et;
+	}
+}
+$d->close();
+
+if(isset($mods))
+{
+	echo '<tr><td><h3>Моды:</h3></td></tr>';
+	foreach($mods as $mod)
+	{
+		$f = file('data/'.$mod);
+		$e = explode(':', str_replace('/', '', $f[1]));
+		echo '<tr><td><b><a href="'.alk(substr($mod,2)).'">'.$e[0].'</a></b> : <i>'.$e[1].'</i></td></tr>';
+	}
+}
+
+echo '<tr><td><hr></td></tr>';
+
+// плагины
+$d = dir('plugins');
+while (false !== ($et = $d->read()))
+{
+	if(substr($et,0,1) != '.')
+	{
+		$plugs[] = $et;
+	}
+}
+$d->close();
+
+if(isset($plugs))
+{
+	echo '<tr><td><h3>Плагины:</h3></td></tr>';
+
+	foreach($plugs as $plug)
+	{
+		$f = file('plugins/'.$plug);
+		$e = explode(':', str_replace('/', '', $f[1]));
+		@$checked = $_glob['plugins'][$plug] ? 'checked' : '';
+		echo '<tr><td><input type="checkbox" style="float: left;" '.$checked.' value="1" name="plugins_'.$plug.'"> <b><a href="'.alk($plug).'">'.$e[0].'</a></b> : <i>'.$e[1].'</i></td></tr>';
+	}
+}
+
+echo '<tr><td><hr></td></tr>';
+
+foreach($_s as $k=>$v) {
+
+if(!in_array($k,$exp)) {
+
+	//шаблоны
+	if($k=='tpd') {
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value"><select size="1" name="_stpd">';
+		$d = dir('template');
+		while (false !== ($et = $d->read()))
+		{
+			if(substr($et,0,1) != '.' && is_dir('template/'.$et))
+			{
+				$c = '';
+				if(eregi($et,$_s['tpd'])) $c = 'selected';
+				echo '<option value="template/'.$et.'" '.$c.'>'.$et.'</option>';
+			}
+			$tplfiles[] = $et;
+		}
+		$d->close();
+		echo '</select></td></tr>';
+	}
+
+	//шаблон записи
+	else 	if($k=='tpp') {
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value"><select size="1" name="_stpp">';
+
+		// шаблоны
+		$d = dir($_s['tpd']);
+
+		while (false !== ($et = $d->read()))
+		{
+			if (stristr($et, 'post-') && !stristr($et, 'form'))
+			{
+				$c = eregi($et,$_s['tpp']) ? 'selected' : '';
+				echo '<option value="'.$et.'" '.$c.'>'.str_replace('.php', '', $et).'</option>';
+			}
+		}
+		$d->close();
+		echo '</select></td></tr>';
+	}
+
+	//шаблон rss
+	else 	if($k=='rsstpl') {
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value"><select size="1" name="_srsstpl">';
+		$d = dir($_s['tpd']);
+		while (false !== ($et = $d->read()))
+		{
+			if(substr($et,0,1) != '.' && strstr($et, 'rss'))
+			{
+				$c = eregi($et,$_s['rsstpl']) ? 'selected' : '';
+				echo '<option value="'.$et.'" '.$c.'>'.$et.'</option>';
+			}
+		}
+		$d->close();
+		echo '</select></td></tr>';
+	}
+
+	//главная страница
+	else if($k=='index') {
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value"><select size="1" name="_sindex"><option value="0">не назначать</option>';
+		$d = dir($_POST['datadir']);
+		while (false !== ($et = $d->read()))
+		{
+			if(substr($et,0,1) != '.' && !is_dir($_POST['datadir'].'/'.$et) && !is_numeric($et))
+			{
+				$c = '';
+				if(eregi($et,$_s['index'])) $c = 'selected';
+				$page = pginfo($_POST['datadir'].'/'.$et);
+				echo '<option value="'.$et.'" '.$c.'>'.$page['title'].'</option>';
+			}
+		}
+		$d->close();
+		echo '</select></td></tr>';
+	}
+
+	// скрытое поле?
+	else if($_d[$k]!='hidden') {
+		if($k == 'pass') $v = '';
+
+		if($o = explode(':',$_d[$k])) {
+			$selectors = '';
+			if(isset($o[1]) && strpos($o[1],'/')) {
+				$u = explode('/',$o[1]);
+				foreach($u as $val) {
+					$r = explode('(',$val);
+					$def = str_replace(')','',$r[1]);
+					$se = '';
+					if($_s[$k]==$def) $se = 'selected';
+					$selectors .= '<option value="'.$def.'" '.$se.'>'.$r[0].'</option>';
+				}
+				$_d[$k] = $o[0];
+				$selector = '<select size="1" name="_s'.$k.'">'.$selectors.'</select>';
+			} else {
+				if(strpos($k,'tx')) $selector = '<textarea name="_s'.$k.'">'.@htmlspecialchars($v).'</textarea>';
+				else $selector = '<input name="_s'.$k.'" type="text" value="'.@htmlspecialchars($v).'">';
+			}
+		}
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value">'.$selector.'</td></tr>';
+	} else echo '<input name="_s'.$k.'" type="hidden" value="'.$v.'">';
+
+}
+
+}
+
+echo '<tr><td><hr></td></tr>';
+
+foreach($_l as $k=>$v) {
+	// скрытое поле?
+	if($_d[$k]!='hidden') {
+		echo '<tr><td class="name"><b>'.$_d[$k].'</b></td></tr><tr><td class="value"><input name="_l'.$k.'" type="text" value="'.htmlspecialchars($v).'"></td></tr>';
+	} else echo '<input name="_l'.$k.'" type="hidden" value="'.$v.'">';
+}
+
+}
+
+?>
+<tr><td align="center"><input name="sett" type="hidden" value="1"><input type="submit"></td></tr>
+</table>
+</form>

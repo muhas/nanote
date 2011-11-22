@@ -1,0 +1,140 @@
+#addcart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:99;
+  text-align: left;
+  display:none;
+}
+#addcart .popup{
+  position:relative;
+  border:3px solid transparent;
+  border-radius:5px;
+  box-shadow:0 0 18px rgba(0,0,0,0.4);
+}
+#addcart .close {
+	float:right;
+	margin-top:-3px;
+	margin-right:-3px;
+	cursor:pointer;
+	opacity:0.5;
+	background-image: url('default/close.png');
+	height:15px;
+	width:15px;
+}
+#addcart .cartwait {
+	height:50px;
+	background: url('default/wait.gif') no-repeat scroll center center transparent
+}
+#addcart .cont {
+  display:table;
+  width: 500px;
+  padding: 5px;
+  background: #fff;
+  border-radius:5px;
+}
+#addcart .close:hover {
+	opacity:1;
+}
+#addcart .cart {
+	display:table;
+	width:500px;
+	text-align:center;
+}
+#addcart .cart h2 {
+	text-align:center;
+	font-family: "Bitstream Vera Sans", sans-serif;
+	letter-spacing: 2px;
+	font-weight: normal;
+	padding: 4px;
+	border-bottom: 1px solid #bbb;
+	border-top: 1px solid #bbb;
+	text-shadow:2px 2px 1px #ccc;
+	clear:both;
+	margin: 0 20px 5px 20px;
+}
+#addcart .aboutadd {
+	text-align:center;
+}
+
+.cartform {
+	width:150px;
+	float:right;
+}
+.nanoprice {
+	display:block;
+	font-weight:bold;
+	float:left;
+	padding: 5px;
+	text-align:center;
+}
+.cartform input.cartcount {
+	width:20px;
+	background: none repeat scroll 0 0 #E7E3E7;
+	border: 1px solid #CCCCCC;
+	margin: 0px;
+	padding: 5px;
+	display:none;
+}
+.cartform input.addcart {
+	margin:0px;
+	padding:0px;
+	width:23px;
+	height:30px;
+	background:transparent;
+	background-image: url('default/add.png');
+	border:none;
+	float:right;
+	cursor:pointer;
+}
+
+#cartable {
+	margin:0 10px 0 10px;
+}
+#cartable table {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+}
+#cartable td,#cartable th {
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	padding:3px;
+}
+#cartable th {
+	font-weight:bold;
+	font-size:0.8em;
+}
+#cartable td.name {
+	text-align:left;
+}
+#cartable td.count {
+	text-align:center;
+}
+#cartable td.count input.newcart {
+	width:25px;
+}
+#cartable td.price,#cartable td.summ {
+	text-align:right;
+}
+#cartable .total {
+	text-align:right;
+}
+
+#switchcart span, .delete span {
+	cursor:pointer;
+	color: #191970;
+}
+#switchcart span:hover, .delete span:hover {
+	text-decoration:underline;
+}
+#cart_overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  display: none; 
+  opacity: 0.2;
+  background-color: #000;
+  z-index:95;
+}

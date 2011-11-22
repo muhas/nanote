@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /data/
+Disallow: /template/
+Disallow: /javascript/
+Disallow: /files/
+Disallow: /tmp/
+Disallow: /cart/
+Disallow: *.login
+Disallow: /all.php

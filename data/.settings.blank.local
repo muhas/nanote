@@ -1,0 +1,26 @@
+a:6:{s:5:"alias";a:2:{s:11:"mal-da-udal";s:10:"1254942727";i:1254942727;s:11:"mal-da-udal";}s:8:"comments";a:1:{i:1254942727;i:0;}s:5:"draft";a:1:{i:1254942727;i:0;}s:8:"template";a:1:{i:1254942727;s:0:"";}s:5:"block";a:3:{s:6:"footer";a:2:{i:0;a:2:{i:0;s:17:"Powered by Nanote";i:1;s:66:"<a href="http://nanote-be.ru" title="Powered by Nanote">Nanote</a>";}i:1;a:2:{i:0;s:21:"Ссылка на rss";i:1;s:42:"<a href="%rsslink%" rel="nofollow">RSS</a>";}}s:6:"header";a:1:{i:0;a:2:{i:0;s:27:"Название блога";i:1;s:29:"<span><h1>%bname%</h1></span>";}}s:4:"left";a:5:{i:0;a:2:{i:0;s:18:"Навигация";i:1;s:530:"<ul id="menu">
+	<li>» <a href="%url%" rel="nofollow">главная</a></li>
+	<li>» <a href="%url%?/pg/.login" rel="nofollow">войти</a></li>
+<!--is_admin-
+	<li>» <a href="%url%?/ed">запись</a></li>
+	<li>» <a href="%url%?/ep">страница</a></li>
+	<li>» <a href="%url%?/bk">новый блок</a></li>
+	<li>» <a href="%url%?/pg/.blocks">менеджер блоков</a></li>
+	<li>» <a href="%url%?/pg/.panel">установки</a></li>
+	<li>» <a href="%url%?/lgout">выйти</a></li>
+-is_admin-->
+</ul>";}i:1;a:2:{i:0;s:22:"Комментарии";i:1;s:9:"%cmtlist%";}i:2;a:2:{i:0;s:16:"Страницы";i:1;s:67:"<a href="%url%?/pg/.pages">Все страницы</a><br>
+%pglist%";}i:3;a:2:{i:0;s:10:"Поиск";i:1;s:231:"<form method="post" action="%url%">
+<input type="hidden" name="act" value="sw" />
+<input type="text" name="sw" value=" поиск " onfocus="if(this.value==' поиск ')this.value=''" onBlur="this.value=' поиск '" />
+</form>";}i:4;a:2:{i:0;s:14:"Google AdSense";i:1;s:300:"<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3824691812008975";
+/* nanote install */
+google_ad_slot = "9592489308";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>";}}}s:3:"cat";a:0:{}}
