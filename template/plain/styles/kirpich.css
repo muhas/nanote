@@ -1,0 +1,65 @@
+/* кирпичный */
+body {
+	background: #884535;
+}
+a, a:hover, a:visited {
+	color: #884535;
+}
+input, textarea{
+	border: 1px solid #884535;
+}
+h1 {
+	color: #884535;
+}
+#header {
+	border-bottom: 2px solid #884535;
+}
+#header h2 {
+	color: #884535;
+}
+#wrapper {
+	background: #fff;
+	border: #884535;
+}
+#content h2 {
+	color: #fff;
+	background: #884535;
+}
+.micropost {
+	border-top: 2px solid #884535;
+	border-bottom: 2px solid #884535;
+}
+.pdate a, .pdate a:visited {
+	color:#000;
+}
+.pdate a:hover {
+	color:#000;
+}
+.paging strong {
+	color:#000;
+}
+.paging a:hover, .paging a:hover strong {
+	background:#884535;
+	color: #fff;
+}
+#navi { 
+	border-top: 2px solid #884535;
+	border-bottom: 2px solid #884535;
+}
+.author {	
+	background:#884535;
+	color:#fff;
+}
+.author a {
+	color:#fff;
+}
+#cmtform label { 
+	color: #884535; 
+}
+#side h2 {
+	color:#fff;
+	background: #884535;
+}
+#footer {
+	border-top: 2px solid #884535;
+}
