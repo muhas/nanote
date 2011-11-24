@@ -1,3 +1,4 @@
+/* циннвальдитовый */
 body {
 	background: #d6c2a8;
 }
@@ -24,19 +25,22 @@ h1 {
 	color: #000;
 	background: #d6c2a8;
 }
-#content .micropost {
+.micropost {
 	border-top: 2px solid #d6c2a8;
 	border-bottom: 2px solid #d6c2a8;
+}
+.pdate a, .pdate a:visited {
+	color:#000;
+}
+.pdate a:hover {
+	color:#000;
 }
 .paging strong {
 	color:#000;
 }
-.paging a:hover {
+.paging a:hover, .paging a:hover strong  {
 	background:#d6c2a8;
-	color:#fff;
-}
-.paging a:hover strong {
-	color:#fff;
+	color:#000;
 }
 #navi { 
 	border-top: 2px solid #d6c2a8;

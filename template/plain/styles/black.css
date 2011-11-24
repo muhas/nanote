@@ -1,3 +1,4 @@
+/* черный */
 body {
 	background: #000;
 }
@@ -24,9 +25,15 @@ h1 {
 	color: #fff;
 	background: #000;
 }
-#content .micropost {
+.micropost {
 	border-top: 2px solid #000;
 	border-bottom: 2px solid #000;
+}
+.pdate a, .pdate a:visited {
+	color:#000;
+}
+.pdate a:hover {
+	color:#000;
 }
 .paging strong {
 	color:#000;

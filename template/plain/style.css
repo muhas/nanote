@@ -92,9 +92,11 @@ h1 {
 	font-weight: bold;
 	margin:-1.2em 40px 0 0;
 }
-.pdate a {
-	color:#000;
+.pdate a, .pdate a:visited {
 	text-decoration:none;
+}
+.pdate a:hover {
+	text-decoration:underline;
 }
 .ptxt {
 	margin:10px 40px 0 20px;

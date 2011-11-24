@@ -1,3 +1,4 @@
+/* борода Абдель-Керима */
 body {
 	background: #ccc;
 }
@@ -24,9 +25,15 @@ h1 {
 	color: #000;
 	background: #ddd;
 }
-#content .micropost {
+.micropost {
 	border-top: 2px solid #ddd;
 	border-bottom: 2px solid #ddd;
+}
+.pdate a, .pdate a:visited {
+	color:#000;
+}
+.pdate a:hover {
+	color:#000;
 }
 .paging strong {
 	color:#000;

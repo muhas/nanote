@@ -1,3 +1,4 @@
+/* темно-оливковый */
 body {
 	background: #3f5025;
 }
@@ -24,18 +25,21 @@ h1 {
 	color: #fff;
 	background: #3f5025;
 }
-#content .micropost {
+.micropost {
 	border-top: 2px solid #3f5025;
 	border-bottom: 2px solid #3f5025;
+}
+.pdate a, .pdate a:visited {
+	color:#000;
+}
+.pdate a:hover {
+	color:#000;
 }
 .paging strong {
 	color:#000;
 }
-.paging a:hover {
+.paging a:hover, .paging a:hover strong  {
 	background:#3f5025;
-	color:#fff;
-}
-.paging a:hover strong {
 	color:#fff;
 }
 #navi { 
