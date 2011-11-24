@@ -10,7 +10,7 @@ Nanote simple flat-file blog script
 
 Изменения относительно основной ветки nanote
         * фикс пагинации ещё не попавший в svn nanote
-	* Добавлен шаблон plain с четырьмя разными стилями (blue, gray, green, letan)
+	* Добавлен шаблон plain с пятью разными стилями (blue, gray, green, letan, black)
 
 Добавленные плагины:
 	1. nanoshop - плагин превращающий любую записись в товар (подробнее http://plain-man.ru/pg/nanoshop)

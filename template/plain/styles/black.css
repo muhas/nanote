@@ -1,0 +1,58 @@
+body {
+	background: #000;
+}
+a, a:hover, a:visited {
+	color: #000;
+}
+input, textarea{
+	border: 1px solid #000;
+}
+h1 {
+	color: #000;
+}
+#header {
+	border-bottom: 2px solid #000;
+}
+#header h2 {
+	color: #000;
+}
+#wrapper {
+	background: #fff;
+	border: #000;
+}
+#content h2 {
+	color: #fff;
+	background: #000;
+}
+#content .micropost {
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+.paging strong {
+	color:#000;
+}
+.paging a:hover {
+	background:#ccc;
+	color: #000;
+}
+#navi { 
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+.author {	
+	background:#4d4d4d;
+	color:#fff;
+}
+.author a {
+	color:#fff;
+}
+#cmtform label { 
+	color: #000; 
+}
+#side h2 {
+	color:#fff;
+	background: #000;
+}
+#footer {
+	border-top: 2px solid #000;
+}
