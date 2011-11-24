@@ -103,6 +103,10 @@ h1 {
 .pcat {
 	font-weight:normal;
 	text-align:center;
+	font-size:0.9em;
+}
+.pcat a {
+	text-decoration:none;
 }
 .pcat a:hover {
 	text-decoration:underline;
