@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_s['enc']; ?>" />
+<?php if(!isset($_s['plainstyle'])) $_s['plainstyle'] = "letan.css"; ?>
 <link rel="stylesheet" href="<?php echo $_s['url'].$_s['tpd']; ?>/style.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $_s['url'].$_s['tpd']; ?>/styles/letan.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $_s['url'].$_s['tpd']; ?>/styles/<?php echo $_s['plainstyle']; ?>" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo $_s['bname']; ?>" href="<?php echo $_lk['rsslink']; ?>" />
 <title><?php echo $_s['title']; ?></title>
 <?php /*<!--system.meta-block-tpl-%content%/-system.meta-block-tpl-->*/ ?>

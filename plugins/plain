@@ -1,0 +1,49 @@
+<?php
+//plain:Управление стилями шаблона plain //
+//0.1 ,muhas//
+
+
+$plugins['action.plain'][] = 'plainstyle';
+
+
+function plainstyle() {
+	global $_s, $_v, $_glob;
+	if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+		header ('Content-type: text/html; charset=utf-8');
+		if(!isset($_POST['save'])) {
+			echo '<form action="" method="post">';
+			if ($_s['tpd'] != 'template/plain'){
+				$_s['tpd'] = 'template/plain';
+				echo "<b>Текущий шаблон не <i>plain</i>, после установки стиля произойдет переключение на него<br></b>";
+			}
+			echo 'Выберите стиль шаблона <select size="1" name="plainstyle">';
+			// шаблоны
+			$d = dir($_s['tpd'].'/styles');
+			while (false !== ($et = $d->read())){
+			echo $et;
+				if (stristr($et, '.css')){
+					if($et == $_s['plainstyle'] || (!isset($_s['plainstyle']) && $et == "letan.css")) {
+						$c = 'selected';
+					}else {
+						$c='';
+					}
+					echo '<option value="'.$et.'" '.$c.'>'.$et.'</option>';
+				}
+			}
+			$d->close();
+			echo '</select><br>';
+			echo '<input name="save" type="hidden" value="on" /><input type="submit" /></form>';
+			exit;
+		} else {
+			$_glob['_splainstyle']=$_POST['plainstyle'];
+			$_glob['_stpd']='template/plain';
+			fsave($_POST['datadir'].'/.settings.global', 'w+', serialize($_glob));
+		}
+		@$_s['pglk'] .=
+			'<script>
+				var notify_msg = "Настройки стиля сохранены<br>Что бы увидеть изменения обновите страницу.";
+			</script>';	
+	}
+}
+
+?>
