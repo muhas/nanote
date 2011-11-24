@@ -1,0 +1,5 @@
+<url>
+	<loc><?php echo plk($pst['id']); ?></loc> 
+	<lastmod><?php echo date("Y-m-d", $pst['id'] + $_s['tmset'] * 3600); ?></lastmod> 
+	<priority>0.6</priority> 
+</url>

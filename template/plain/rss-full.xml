@@ -1,0 +1,7 @@
+<item>
+	<title><?php echo htmlspecialchars($pst['title'], ENT_QUOTES); ?></title>
+	<link><?php echo $pl=plk($pst['id']); ?></link>
+	<description><?php echo htmlspecialchars(nl2br($pst['fulltext']), ENT_QUOTES); ?></description>
+	<pubDate><?php echo date("D, d M Y H:i:s ", $pst['id'] + $_s['tmset'] * 3600).'GMT'; ?></pubDate>
+	<guid><?php echo $pl; ?></guid>
+</item>

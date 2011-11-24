@@ -1,0 +1,58 @@
+body {
+	background: #08385a;
+	color: #000;
+}
+a, a:hover, a:visited {
+	color: #0b4c79;
+}
+input, textarea{
+	border: 1px solid #0b4c79;
+}
+h1 {
+	color: #0b4c79;
+}
+#header {
+	border-bottom: 2px solid #08385a;
+}
+#header h2 {
+	color: #0b4c79;
+}
+#wrapper {
+	background: #fff;
+	border: #ddd;
+}
+#content h2 {
+	color: #fff;
+	background:#08385a;
+}
+#side h2 {
+	color: #fff;
+	background: #08385a;
+}
+#content .micropost {
+	border-top: 2px solid #08385a;
+	border-bottom: 2px solid #08385a;
+}
+.paging strong {
+	color:#000;
+}
+.paging a:hover {
+	background:#08385a;
+	color:#fff;
+}
+.paging a:hover strong {
+	color:#fff;
+}
+#navi { 
+	border-top: 2px solid #08385a;
+	border-bottom: 2px solid #08385a;
+}
+.author {	
+	background:#A4B9C9;
+}
+#cmtform label {
+	color: #0b4c79;
+}
+#footer {
+	border-top: 2px solid #08385a;
+}
