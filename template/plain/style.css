@@ -169,12 +169,12 @@ h1 {
 #ava
 {
 	float: left;
-	margin-left: -40px;
+	margin-left: -50px;
 	margin-top: -13px;
 }
 .cmt p { margin: 0; text-indent: 0; }
 
-.cmt { margin: 20px 40px 40px 50px;}
+.cmt { margin: 20px 40px 40px 60px;}
 .cmt strong { cursor: pointer; }
 .author {	
 	margin: 12px 40px 30px 50px;
