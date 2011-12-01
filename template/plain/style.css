@@ -8,7 +8,7 @@ body {
 	letter-spacing: .02em;
 }
 p {
-	margin: 0 0 18px
+	margin: 0 0 0.1em;
 }
 img {
 	border: none;
@@ -102,6 +102,9 @@ h1 {
 	margin:10px 40px 0 20px;
 	font-family: Verdana;
 }
+.ptxt ul, .ptxt ol {
+	padding:0.1em 0.1em 0.1em 2em;
+}
 .pcat {
 	font-weight:normal;
 	text-align:center;
@@ -122,6 +125,9 @@ h1 {
 	margin: 10px 40px 10px 20px;
 	padding:5px 2px 5px 2px;
 	font-family: Verdana;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
 }
 .micropost .pcat {
 	float:right;
