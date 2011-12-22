@@ -11,10 +11,6 @@ Header set Cache-Control "max-age=172800, public"
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-RewriteCond %{HTTP_HOST} !^plain-man\.ru$       [NC]
-RewriteRule ^(.*)$       http://plain-man.ru/$1 [R=301,L]
-
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
