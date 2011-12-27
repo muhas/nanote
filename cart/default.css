@@ -1,16 +1,16 @@
 #addcart {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index:99;
-  text-align: left;
-  display:none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:99;
+	text-align: left;
+	display:none;
 }
 #addcart .popup{
-  position:relative;
-  border:3px solid transparent;
-  border-radius:5px;
-  box-shadow:0 0 18px rgba(0,0,0,0.4);
+	position:relative;
+	border:3px solid transparent;
+	border-radius:5px;
+	box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 #addcart .close {
 	float:right;
@@ -27,11 +27,11 @@
 	background: url('default/wait.gif') no-repeat scroll center center transparent
 }
 #addcart .cont {
-  display:table;
-  width: 500px;
-  padding: 5px;
-  background: #fff;
-  border-radius:5px;
+	display:table;
+	width: 500px;
+	padding: 5px;
+	background: #fff;
+	border-radius:5px;
 }
 #addcart .close:hover {
 	opacity:1;
@@ -58,7 +58,6 @@
 }
 
 .cartform {
-	width:150px;
 	float:right;
 }
 .nanoprice {
@@ -128,13 +127,13 @@
 	text-decoration:underline;
 }
 #cart_overlay {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height:100%;
-  width:100%;
-  display: none; 
-  opacity: 0.2;
-  background-color: #000;
-  z-index:95;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height:100%;
+	width:100%;
+	display: none; 
+	opacity: 0.2;
+	background-color: #000;
+	z-index:95;
 }

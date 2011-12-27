@@ -867,8 +867,8 @@ class Image_Processor {
 
 				// защита от повторяющихся url (проблема одинаковых заголовков)
 				$num = 2;
-				while(isset($_loc['alias'][$lat.'-'.$num])) $num++;
-				$lat = isset($_loc['alias'][$lat]) ? $lat . '-' . $num : $lat;
+				while(isset($_loc['alias'][$lat.'-'.$num]) && $_v['p'] != $_loc['alias'][$lat.'-'.$num]) $num++;
+				$lat = (isset($_loc['alias'][$lat]) && $_v['p'] != $_loc['alias'][$lat]) ? $lat . '-' . $num : $lat;
 
 				$_loc['alias'][$lat] = $_v['p'];
 				$_loc['alias'][$_v['p']] = $lat;
