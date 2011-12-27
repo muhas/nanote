@@ -1,0 +1,45 @@
+<?php
+//showrelated:Отображение связанных записей//
+//0.2,Простой человке aka muhas//
+
+$plugins['template.form-post'][] = 'addrelated';
+$plugins['template.post.single'][] = 'showrelated';
+$plugins['action.showrelated'][] = 'configrelated'; // а оно вообще надо?
+// список пользователей userlist
+
+function addrelated() {
+	global $extra_options, $pst, $_s;
+	$extra_options['related']['title'] = "Похожие записи";
+}
+function showrelated() {
+	global $pst, $_loc;
+	$related=explode(',',$_loc['input_related'][$pst['id']]);
+	if(!empty($related[0])) {
+		manualrelated($related);
+	} else {
+		autorelated($pst['id']); 
+	}
+}
+function manualrelated($related){
+	$pst['related'] = '<ul id="relatedpost">';
+	foreach($related as $id) {
+		$rel=ptinfo(trim($id));
+		$pst['related'] .= '<li><a href="'.$rel['link'].'">'.$rel['title'].'</a></li>';
+	}
+	$pst['related'] .= '</ul>';
+}
+function autorelated($id) {
+	// в ожидании чуда, ну и отсутвие лени не помешает
+	// чудом могут быть категории которые уже не будут изменяться 
+}
+
+function configrelated() {
+	global $_s, $_v, $_glob;
+	if (isset($_SESSION['adm']) || !trim($_s['pass'])) {
+		header ('Content-type: text/html; charset=utf-8');
+		echo 'Для отображения связанных записей необходимо добавить в шаблоне отображения полной записи  <b>&lt;?php echo $pst[\'related\'] ?&gt;</b><br>
+		<br><small>В ручном режиме для отображеня связанных необходимо при добавлении/редактировании записи в соответсвующем поле через запятую указывать id связных записей.
+		<br><br>Автоматические похожие записи пока не поддерживаются, используйте ручной режим...</small>';
+		exit;
+	}
+}
