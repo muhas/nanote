@@ -22,6 +22,13 @@ input, textarea {
 	margin: 5px;
 }
 input[type="checkbox"] { width: 15px; border: none; }
+input[type="radio"] { width: 15px; border: none; }
+a,  a:visited {
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration:none;
+}
 h1 {
 	font-weight: bold;
 	font-size: 58px;
@@ -90,7 +97,7 @@ h1 {
 .pdate {
 	float: right;
 	font-weight: bold;
-	margin:-1.2em 40px 0 0;
+	margin:-2em 40px 0 0;
 }
 .pdate a, .pdate a:visited {
 	text-decoration:none;
@@ -155,6 +162,8 @@ h1 {
 	margin: 10px 40px 0 20px; 
 	height:1.5em;
 }
+#navi a {text-decoration:none;}
+#navi a:hover {text-decoration:underline;}
 #navi .prev { float: right; }
 #navi .next { float: left; }
 
@@ -164,10 +173,12 @@ h1 {
 	margin: 0px auto;
 	position: relative;
 }
-#cmtform h3 { padding: 10px; text-align: center; }
+#cmtform h3 {
+	padding: 10px;
+	text-align: center;
+}
 #cmtform label u { margin-left: 5px; }
-#ava
-{
+#ava {
 	float: left;
 	margin-left: -50px;
 	margin-top: -13px;
@@ -210,7 +221,7 @@ h1 {
 	padding: 10px 10px 10px 40px;
 }
 #side .block {
-	padding:5px 5px 15px 20px;
+	padding:5px 0px 15px 20px;
 	font-family: Verdana;
 }
 #side ul, #side ol {
@@ -238,6 +249,7 @@ h2, .block {
 	position: absolute;
 	right: 5px;
 }
+.edpanel a {text-decoration:none;}
 h2 .edpanel, .post .edpanel, .block .edpanel, .micropost .edpanel { 
 	display: none; 
 }
