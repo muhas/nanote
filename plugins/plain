@@ -1,6 +1,6 @@
 <?php
 //plain:Управление стилями шаблона plain //
-//0.1 ,muhas//
+//0.2 ,muhas//
 
 
 $plugins['action.plain'][] = 'plainstyle';
@@ -37,6 +37,7 @@ function plainstyle() {
 		} else {
 			$_glob['_splainstyle']=$_POST['plainstyle'];
 			$_glob['_stpd']='template/plain';
+			$_glob['_dplainstyle']='[plain] Стиль шаблона plain';
 			fsave($_POST['datadir'].'/.settings.global', 'w+', serialize($_glob));
 		}
 		@$_s['pglk'] .=

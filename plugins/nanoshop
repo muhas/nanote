@@ -1,6 +1,6 @@
 <?php
 //nanoshop:наномагазин превращающий посты в товыры //
-//0.3 test4,muhas//
+//0.3 test5,muhas//
 
 
 $plugins['template.post.list'][] = 'shopshow';
@@ -122,6 +122,9 @@ function nanoshop() {
 			$_glob['_sshopvalut']=$_POST['nanovalut'];
 			$_glob['_sshoptpl']=$_POST['shoptpl'];
 			$_glob['_sjquery']=$_POST['jquery'];
+			$_glob['_dshopvalut']='[nanoshop] Вылюта';
+			$_glob['_dshoptpl']='[nanoshop] Стиль наномагазина';
+			$_glob['_djquery']='hidden';
 			fsave($_POST['datadir'].'/.settings.global', 'w+', serialize($_glob));
 		}
 		@$_s['pglk'] .=

@@ -31,13 +31,13 @@
 
 <div id="column" class="left">
 <?php /*
-<!--left-block-tpl-
+<!--sidebar-block-tpl-
 <div class="block">
 	<h2>%title%</h2>
 	<p>%edit%%content%</p>
 </div>
-/-left-block-tpl--> */ ?>
-<?php blocks('left'); ?>
+/-sidebar-block-tpl--> */ ?>
+<?php blocks('sidebar'); ?>
 </div>
 
 <div style="clear: both;"></div>

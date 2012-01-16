@@ -33,11 +33,11 @@
 		</div>
 		<div id="side">
 			<?php /*
-			<!--left-block-tpl-
+			<!--sidebar-block-tpl-
 				<h2>%title%%edit%</h2>
 				<div class="block">%content%</div>
-			/-left-block-tpl--> */ ?>
-			<?php blocks('left'); ?>
+			/-sidebar-block-tpl--> */ ?>
+			<?php blocks('sidebar'); ?>
 		</div>
 
 	</div>
