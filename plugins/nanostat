@@ -1,5 +1,5 @@
 <?php
-//nanostat:простые пользователи//
+//nanostat:простая статистика популярности записей//
 //0.1,muhas//
 
 $plugins['template.post.single'][] = 'nanostats';

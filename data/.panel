@@ -109,7 +109,7 @@ if(!in_array($k,$exp)) {
 
 		while (false !== ($et = $d->read()))
 		{
-			if (stristr($et, 'post-') && !stristr($et, 'form'))
+			if (stristr($et, 'post-') && !stristr($et, 'form') && !stristr($et, '-full.php'))
 			{
 				$c = eregi($et,$_s['tpp']) ? 'selected' : '';
 				echo '<option value="'.$et.'" '.$c.'>'.str_replace('.php', '', $et).'</option>';
