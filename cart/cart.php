@@ -83,7 +83,6 @@ if(isset($_POST['shopuser'])) { // если оформляли заказ
 	if($_POST['aboutcart'] != 'Примечание к заказу') $message .=  'Примечание к заказу: '.$POST['aboutcart'];
 	$message .=  "<br>Имя заказчка: ".$_POST['shopuser']."<br>Email заказчика: ".$_POST['shopmail']."<br>";
 	$mail=str_replace(array('http://', '/'), array('zakaz@', ''), $url);
-	$_s['email']="muhas@plain-man.ru";
 	if(mail($_s['email'], "Заказ с сайта".$_s['bname'], $message, "Content-Type: text/html; charset=utf-8\nFrom: ".$_s['bname']." <".$mail.">\r\n")) {
 		echo "<h2>Ваш заказ отправлен менеджеру</h2>";
 		$message = 'Ваш заказ<br>'.$message.'<br><b>Наш менеджер свяжется с вами.</b>';
