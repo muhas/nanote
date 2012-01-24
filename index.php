@@ -2098,7 +2098,6 @@ case 'sw':
 		$_v['sw'] = clean($_v['sw']);
 
 		$d = dir($_POST['datadir']);
-		$_v['sw'] = $_v['act'] = null;
 		while (false !== ($et = $d->read()))
 		{
 			if(substr($et,0,1)!='.')
