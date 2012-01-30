@@ -39,8 +39,8 @@
 			/-sidebar-block-tpl--> */ ?>
 			<?php blocks('sidebar'); ?>
 		</div>
-
 	</div>
+	<div style="clear:both;"></div>
 	<div id="footer">
 		<?php /*
 		<!--footer-block-tpl-
