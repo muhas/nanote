@@ -2,7 +2,7 @@
 // Nanote - simple flat-file blog script
 // © Zorg <ekumena@gmail.com>, 2007-2011
 
-ERROR_REPORTING(E_ALL);
+ERROR_REPORTING(E_ALL & !E_NOTICE);
 //date_default_timezone_set('Europe/Moscow');
 
 // определим домен
