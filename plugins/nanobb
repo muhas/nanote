@@ -6,7 +6,8 @@ $plugins['comment.save'][] = 'nanobb';
 
 function nanobb() {
 	global $txt;
-	$txt = bbcode_format ($txt);    
+	$txt = bbcode_format ($txt); 
+	$txt = str_replace('&lt;br /&gt;', '<br />', $txt);  
 }
 function bbcode_format ($str) {  
 	$str = htmlentities($str);  
