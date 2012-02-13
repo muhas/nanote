@@ -169,7 +169,6 @@ if(!empty($cart)){ // если корзинка не пуста
 	echo "Корзина пуста<br><br><br>";
 }
 ?>
-
 <script>
 $(".delete  .clearcart").click(function () {
 	$.Storage.set("cart", "");
@@ -181,21 +180,27 @@ $(".delete  .clearcart").click(function () {
 
 $("#switchcart .creatcart").click(function () {
 	
-	$("#cartable .submit").append('<h2>Оформление заказа</h2><input name="shopmail" title="Ваш e-mail"  value="" id="shopmail"><input name="shopuser" title="Ваше имя"  id="shopuser"><textarea name="aboutcart" title="Примечание к заказу"  value=""></textarea><input type="submit" name="submit" value=" Сделать заказ "/>');
+	$("#cartable .submit").append('<h2>Оформление заказа</h2><input name="shopmail" title="Ваш e-mail"  value="" id="shopmail"><input name="shopuser" title="Ваше имя"  id="shopuser"><textarea name="aboutcart" id="aboutcart">Примечание к заказу</textarea><input type="submit" name="submit" value=" Сделать заказ "/>');
 	$("#cartable .submit").slideDown();
 	$("#switchcart").slideUp();
 	//$("form#cartable").submit();
-	$("input:text, textarea").each(function(){
+	$("input:text").each(function(){
 		if(this.value == '')
 			this.value = this.title;
 	});
-	$("input:text, textarea").focus(function(){
+	$("input:text").focus(function(){
 		if(this.value == this.title)
 			this.value = '';
 	});
-	$("input:text, textarea").blur(function(){
+	$("input:text").blur(function(){
 		if(this.value == '')
 			this.value = this.title;
+	});
+	$(function() {
+		$("#aboutcart").focus(function(event) {
+			$(this).text("");
+			$(this).unbind(event);
+		});
 	});
 	$("input:image, input:button, input:submit").click(function(){
 		$(this.form.elements).each(function(){
