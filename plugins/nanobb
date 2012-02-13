@@ -1,0 +1,85 @@
+<?php
+//nanobb:наипростейшие bb коды для комментов //
+//0.01 ,muhas//
+
+$plugins['comment.save'][] = 'nanobb';
+
+function nanobb() {
+	global $txt;
+	$txt = bbcode_format ($txt);    
+}
+function bbcode_format ($str) {  
+	$str = htmlentities($str);  
+	$simple_search = array(  
+				//added line break  
+				'/\[br\]/is',  
+				'/\[b\](.*?)\[\/b\]/is',  
+				'/\[i\](.*?)\[\/i\]/is',  
+				'/\[u\](.*?)\[\/u\]/is',  
+				'/\[url\=(.*?)\](.*?)\[\/url\]/is',  
+				'/\[url\](.*?)\[\/url\]/is',  
+				'/\[align\=(left|center|right)\](.*?)\[\/align\]/is',  
+				'/\[img\](.*?)\[\/img\]/is',  
+				'/\[mail\=(.*?)\](.*?)\[\/mail\]/is',  
+				'/\[mail\](.*?)\[\/mail\]/is',  
+				'/\[font\=(.*?)\](.*?)\[\/font\]/is',  
+				'/\[size\=(.*?)\](.*?)\[\/size\]/is',  
+				'/\[color\=(.*?)\](.*?)\[\/color\]/is',  
+				  //added textarea for code presentation  
+               '/\[codearea\](.*?)\[\/codearea\]/is',  
+				 //added pre class for code presentation  
+              '/\[code\](.*?)\[\/code\]/is',  
+				//added paragraph  
+              '/\[p\](.*?)\[\/p\]/is',  
+				);  
+  
+	$simple_replace = array(  
+				//added line break  
+               '<br />',  
+				'<strong>$1</strong>',  
+				'<em>$1</em>',  
+				'<u>$1</u>',  
+				// added nofollow to prevent spam  
+				'<a href="$1" rel="nofollow">$2</a>',  
+				'<a href="$1" rel="nofollow">$1</a>',  
+				'<div style="text-align: $1;">$2</div>',  
+				//added alt attribute for validation  
+				'<img src="$1" alt="" />',  
+				'<a href="mailto:$1">$2</a>',  
+				'<a href="mailto:$1">$1</a>',  
+				'<span style="font-family: $1;">$2</span>',  
+				'<span style="font-size: $1;">$2</span>',  
+				'<span style="color: $1;">$2</span>',  
+				//added textarea for code presentation  
+				'<textarea class="code_container" rows="30" cols="70">$1</textarea>',  
+				//added pre class for code presentation  
+				'<pre class="code">$1</pre>',  
+				//added paragraph  
+				'<p>$1</p>',  
+				);  
+
+	$str = preg_replace ($simple_search, $simple_replace, $str);  
+	$str = bbcode_quote ($str);  
+	return $str;  
+}  
+  
+  
+  
+function bbcode_quote ($str) {  
+	$open = '<blockquote>';  
+	$close = '</blockquote>';  
+	preg_match_all ('/\[quote\]/i', $str, $matches);  
+	$opentags = count($matches['0']);  
+	preg_match_all ('/\[\/quote\]/i', $str, $matches);  
+	$closetags = count($matches['0']);  
+	$unclosed = $opentags - $closetags;  
+	for ($i = 0; $i < $unclosed; $i++) {  
+		$str .= '</blockquote>';  
+	}  
+	$str = str_replace ('[' . 'quote]', $open, $str);  
+	$str = str_replace ('[/' . 'quote]', $close, $str);  
+	return $str;  
+}  
+  
+?>  
+
