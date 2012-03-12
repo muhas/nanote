@@ -80,7 +80,8 @@ if(isset($_POST['shopuser'])) { // если оформляли заказ
 		$total = $total + $summ; // подсчитали всё
 	}
 	$message .= '</table><div style="text-align:right;">Итого: <span>'.$total.'</span>'.$valut.'</div></div>';
-	if($_POST['aboutcart'] != 'Примечание к заказу') $message .=  'Примечание к заказу: '.$POST['aboutcart'];
+	if($_POST['aboutcart'] != 'Примечание к заказу') $message .=  'Примечание к заказу: 
+'.$_POST['aboutcart'];
 	$message .=  "<br>Имя заказчка: ".$_POST['shopuser']."<br>Email заказчика: ".$_POST['shopmail']."<br>";
 	$mail=str_replace(array('http://', '/'), array('zakaz@', ''), $url);
 	if(mail($_s['email'], "Заказ с сайта".$_s['bname'], $message, "Content-Type: text/html; charset=utf-8\nFrom: ".$_s['bname']." <".$mail.">\r\n")) {
