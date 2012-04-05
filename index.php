@@ -2198,8 +2198,10 @@ if((!isset($_v['act']) && preg_match("/^([a-zA-Z0-9_.]{3,60})$/",$_v['pg'],$m)) 
 		}
 
 		include $_POST['datadir'].'/'.$_v['pg'];
+	} else {
+		$_v['pg'] = '.error404';
+		include $_POST['datadir'].'/'.$_v['pg'];
 	}
-	else echo $_l['empty'];
 }
 else if(!isset($_v['p']) || $mode=='list')
 {
