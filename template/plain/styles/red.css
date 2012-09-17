@@ -1,65 +1,65 @@
 /* малиновый */
 body {
-	background: #dc143c;
+  background: #dc143c;
 }
 a, a:hover, a:visited {
-	color: #dc143c;
+  color: #dc143c;
 }
 input, textarea{
-	border: 1px solid #dc143c;
+  border: 1px solid #dc143c;
 }
 h1 {
-	color: #dc143c;
+  color: #dc143c;
 }
 #header {
-	border-bottom: 2px solid #dc143c;
+  border-bottom: 2px solid #dc143c;
 }
 #header h2 {
-	color: #dc143c;
+  color: #dc143c;
 }
 #wrapper {
-	background: #fff;
-	border: #dc143c;
+  background: #fff;
+  border: #dc143c;
 }
 #content h2 {
-	color: #fff;
-	background: #dc143c;
+  color: #fff;
+  background: #dc143c;
 }
 .micropost {
-	border-top: 2px solid #dc143c;
-	border-bottom: 2px solid #dc143c;
+  border-top: 2px solid #dc143c;
+  border-bottom: 2px solid #dc143c;
 }
 .pdate a, .pdate a:visited {
-	color:#000;
+  color:#000;
 }
 .pdate a:hover {
-	color:#000;
+  color:#000;
 }
 .paging strong {
-	color:#000;
+  color:#000;
 }
 .paging a:hover, .paging a:hover strong {
-	background:#dc143c;
-	color: #fff;
+  background:#dc143c;
+  color: #fff;
 }
 #navi { 
-	border-top: 2px solid #dc143c;
-	border-bottom: 2px solid #dc143c;
+  border-top: 2px solid #dc143c;
+  border-bottom: 2px solid #dc143c;
 }
-.author {	
-	background:#dc143c;
-	color:#fff;
+.author {  
+  background:#dc143c;
+  color:#fff;
 }
 .author a {
-	color:#fff;
+  color:#fff;
 }
 #cmtform label { 
-	color: #dc143c; 
+  color: #dc143c; 
 }
 #side h2 {
-	color:#fff;
-	background: #dc143c;
+  color:#fff;
+  background: #dc143c;
 }
 #footer {
-	border-top: 2px solid #dc143c;
+  border-top: 2px solid #dc143c;
 }

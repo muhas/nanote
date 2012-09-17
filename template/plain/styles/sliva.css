@@ -1,65 +1,65 @@
 /* сливовый */
 body {
-	background: #660066;
+  background: #660066;
 }
 a, a:hover, a:visited {
-	color: #660066;
+  color: #660066;
 }
 input, textarea{
-	border: 1px solid #660066;
+  border: 1px solid #660066;
 }
 h1 {
-	color: #660066;
+  color: #660066;
 }
 #header {
-	border-bottom: 2px solid #660066;
+  border-bottom: 2px solid #660066;
 }
 #header h2 {
-	color: #660066;
+  color: #660066;
 }
 #wrapper {
-	background: #fff;
-	border: #660066;
+  background: #fff;
+  border: #660066;
 }
 #content h2 {
-	color: #fff;
-	background: #660066;
+  color: #fff;
+  background: #660066;
 }
 .micropost {
-	border-top: 2px solid #660066;
-	border-bottom: 2px solid #660066;
+  border-top: 2px solid #660066;
+  border-bottom: 2px solid #660066;
 }
 .pdate a, .pdate a:visited {
-	color:#000;
+  color:#000;
 }
 .pdate a:hover {
-	color:#000;
+  color:#000;
 }
 .paging strong {
-	color:#000;
+  color:#000;
 }
 .paging a:hover, .paging a:hover strong {
-	background:#660066;
-	color: #fff;
+  background:#660066;
+  color: #fff;
 }
 #navi { 
-	border-top: 2px solid #660066;
-	border-bottom: 2px solid #660066;
+  border-top: 2px solid #660066;
+  border-bottom: 2px solid #660066;
 }
-.author {	
-	background:#660066;
-	color:#fff;
+.author {  
+  background:#660066;
+  color:#fff;
 }
 .author a {
-	color:#fff;
+  color:#fff;
 }
 #cmtform label { 
-	color: #660066; 
+  color: #660066; 
 }
 #side h2 {
-	color:#fff;
-	background: #660066;
+  color:#fff;
+  background: #660066;
 }
 #footer {
-	border-top: 2px solid #660066;
+  border-top: 2px solid #660066;
 }

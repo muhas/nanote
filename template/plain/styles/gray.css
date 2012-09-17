@@ -1,61 +1,61 @@
 /* борода Абдель-Керима */
 body {
-	background: #ccc;
+  background: #ccc;
 }
 a, a:hover, a:visited {
-	color: #888;
+  color: #888;
 }
 input, textarea{
-	border: 1px solid #888;
+  border: 1px solid #888;
 }
 h1 {
-	color: #888;
+  color: #888;
 }
 #header {
-	border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
 }
 #header h2 {
-	color: #888;
+  color: #888;
 }
 #wrapper {
-	background: #fff;
-	border: #ddd;
+  background: #fff;
+  border: #ddd;
 }
 #content h2 {
-	color: #000;
-	background: #ddd;
+  color: #000;
+  background: #ddd;
 }
 .micropost {
-	border-top: 2px solid #ddd;
-	border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
 }
 .pdate a, .pdate a:visited {
-	color:#000;
+  color:#000;
 }
 .pdate a:hover {
-	color:#000;
+  color:#000;
 }
 .paging strong {
-	color:#000;
+  color:#000;
 }
 .paging a:hover {
-	background:#ccc;
-	color: #000;
+  background:#ccc;
+  color: #000;
 }
 #navi { 
-	border-top: 2px solid #ddd;
-	border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
 }
-.author {	
-	background:#eee;
+.author {  
+  background:#eee;
 }
 #cmtform label { 
-	color: #777; 
+  color: #777; 
 }
 #side h2 {
-	color:#000;
-	background: #ddd;
+  color:#000;
+  background: #ddd;
 }
 #footer {
-	border-top: 2px solid #ddd;
+  border-top: 2px solid #ddd;
 }

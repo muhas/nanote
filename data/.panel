@@ -91,7 +91,7 @@ if(!in_array($k,$exp)) {
 			if(substr($et,0,1) != '.' && is_dir('template/'.$et))
 			{
 				$c = '';
-				if(eregi($et,$_s['tpd'])) $c = 'selected';
+				if('template/'.$et == $_s['tpd']) $c = 'selected';
 				echo '<option value="template/'.$et.'" '.$c.'>'.$et.'</option>';
 			}
 			$tplfiles[] = $et;

@@ -1,61 +1,61 @@
 /* циннвальдитовый */
 body {
-	background: #d6c2a8;
+  background: #d6c2a8;
 }
 a, a:hover, a:visited {
-	color: #4b3924;
+  color: #4b3924;
 }
 input, textarea{
-	border: 1px solid #4b3924;
+  border: 1px solid #4b3924;
 }
 h1 {
-	color: #4b3924;
+  color: #4b3924;
 }
 #header {
-	border-bottom: 2px solid #d6c2a8;
+  border-bottom: 2px solid #d6c2a8;
 }
 #header h2 {
-	color: #4b3924;
+  color: #4b3924;
 }
 #wrapper {
-	background: #fff;
-	border: #d6c2a8;
+  background: #fff;
+  border: #d6c2a8;
 }
 #content h2 {
-	color: #000;
-	background: #d6c2a8;
+  color: #000;
+  background: #d6c2a8;
 }
 .micropost {
-	border-top: 2px solid #d6c2a8;
-	border-bottom: 2px solid #d6c2a8;
+  border-top: 2px solid #d6c2a8;
+  border-bottom: 2px solid #d6c2a8;
 }
 .pdate a, .pdate a:visited {
-	color:#000;
+  color:#000;
 }
 .pdate a:hover {
-	color:#000;
+  color:#000;
 }
 .paging strong {
-	color:#000;
+  color:#000;
 }
 .paging a:hover, .paging a:hover strong  {
-	background:#d6c2a8;
-	color:#000;
+  background:#d6c2a8;
+  color:#000;
 }
 #navi { 
-	border-top: 2px solid #d6c2a8;
-	border-bottom: 2px solid #d6c2a8;
+  border-top: 2px solid #d6c2a8;
+  border-bottom: 2px solid #d6c2a8;
 }
-.author {	
-	background:#F3E0C8;
+.author {  
+  background:#F3E0C8;
 }
 #cmtform label {
-	color: #777;
+  color: #777;
 }
 #side h2 {
-	color:#000;
-	background: #d6c2a8;
+  color:#000;
+  background: #d6c2a8;
 }
 #footer {
-	border-top: 2px solid #d6c2a8;
+  border-top: 2px solid #d6c2a8;
 }
