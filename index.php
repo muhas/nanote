@@ -1,4 +1,8 @@
 <?php
+// Nanote - simple flat-file blog script
+// © Zorg <ekumena@gmail.com>, 2007-2011
+// © muhas <muhas@plain-man.ru>, 2011-2012
+
 //date_default_timezone_set('Europe/Moscow');
 
 // определим домен
@@ -677,15 +681,15 @@ class Image_Processor {
 
 	function slk($p, $sw=false) {
 	global $_s, $_v;
-	  global $rq; //muhas категории new
+	  global $rq; //nanote-git пагинация категорий
 	  if (isset($rq[2]) && $rq[2] == "t") {
-	    $a = '/t/'.$rq[1]; //muhas
+	    $a = '/t/'.$rq[1]; 
 	    return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;  //muhas
 	  }
-	  if (isset($rq[0]) &&  $rq[0] == "t") { //muhas
-	    $a = '/t/'.$rq[1]; //muhas
+	  if (isset($rq[0]) &&  $rq[0] == "t") { 
+	    $a = '/t/'.$rq[1]; 
 	    return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;  //muhas
-	  }//muhas
+	  }//nanote-git
 
 		$a = isset($_v['sw']) ? '/'.$_v['sw'] : '';
 	return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;
