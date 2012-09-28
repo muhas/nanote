@@ -1,8 +1,4 @@
 <?php
-// Nanote - simple flat-file blog script
-// © Zorg <ekumena@gmail.com>, 2007-2011
-
-ERROR_REPORTING(E_ALL & !E_NOTICE);
 //date_default_timezone_set('Europe/Moscow');
 
 // определим домен
@@ -268,8 +264,13 @@ else if(@trim($rq[0]))
 
 		if(isset($rq[2]))
 		{
-			$_v['sw'] = urldecode($rq[2]);
+		  if ($rq[2] == "t" ) {//nanote-git
+		    $_v['act']='t';//nanote-git
+		    $rq[1]=$rq[3];//nanote-git
+		  } elseif ($rq[2] == "sw") {//nanote-git
+		  	$_v['sw'] = urldecode($rq[2]);
 			$_v['act']='sw';
+		  }//nanote-git
 		}
 
 		// меняем заголовок и прочее сео
@@ -676,6 +677,16 @@ class Image_Processor {
 
 	function slk($p, $sw=false) {
 	global $_s, $_v;
+	  global $rq; //muhas категории new
+	  if (isset($rq[2]) && $rq[2] == "t") {
+	    $a = '/t/'.$rq[1]; //muhas
+	    return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;  //muhas
+	  }
+	  if (isset($rq[0]) &&  $rq[0] == "t") { //muhas
+	    $a = '/t/'.$rq[1]; //muhas
+	    return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;  //muhas
+	  }//muhas
+
 		$a = isset($_v['sw']) ? '/'.$_v['sw'] : '';
 	return isset($_s['curl']) ? $_s['url'].'s/'.$p.$a : $_s['url'].'?/s/'.$p.$a;
 	}
@@ -1002,7 +1013,6 @@ class Image_Processor {
 		@list($pst['title'], $pst['text']) = explode("\n", $inon[0], 2);
 
 		$pst['fulltext'] = $pst['text'];
-
 		$pst['id'] = $ide;
 		$pst['timestamp'] = $ide + $_s['tmset'] * 3600;
 
@@ -1058,6 +1068,7 @@ class Image_Processor {
 			else if((sizeof($tx)>2) && $_s['autocut'])
 			{
 				$srt = $tx[0];
+				$srt = preg_replace_callback("/<img(.*?)>/i", "replacethumbs", $srt);
 			}
 
 			if(isset($srt))
@@ -1097,6 +1108,15 @@ class Image_Processor {
 		}
 
 		$pst['template'] = @$_loc['template'][$pst['id']] ? $_loc['template'][$pst['id']] : $_s['tpp'];
+		//nanote-git
+		if (!empty($_loc['cat'][$pst['id']][0][0]) && empty($_loc['template'][$pst['id']])) {
+		  foreach ($_loc['catid'] as $v => $k) {
+		    if  ($k[0] == $_loc['cat'][$pst['id']][0][0]) {
+		     $pst['template'] = $_loc['catid'][$v+1][2] ? $_loc['catid'][$v+1][2] : $_s['tpp'];
+		    }
+		  }
+		} 
+		//nanote-git
 		$pst['template'] = isset($_s['post.tpl.hold']) ? $_s['post.tpl.hold'] : $pst['template'];
 
 		// перехват плагинами
@@ -1645,17 +1665,16 @@ case 't':
 		foreach ($_loc['cat'] as $k=>$v)
 		{
 			foreach($v[0] as $incat)
-			{
+			{	
 				if(in_array($incat, $tags))
 				{
 					// проверяем не скрыта ли (черновик)
 					$allow = ((!@$_loc['draft'][$k] && $k < time()) || isset($_SESSION['adm'])) ? 1 : 0;
-
 					$psts[] = $k;
 				}
 			}
 		}
-
+		
 		// javascript уведомление и подсветка найденного
 		@$_s['pglk'] .=
 			'<script>
@@ -2051,10 +2070,17 @@ if(isset($_SESSION['adm']))
 break;
 
 case 'ed':
-	if(isset($_SESSION['adm']))
-	{
-		savepost();
+	// nanote-git 
+	if (function_exists(nuserole)) {
+	  if(nuserole($rq[1])){ 
+	    savepost();
+	  }
+	} else {
+	  if(isset($_SESSION['adm'])) {
+	    savepost();
+	  }
 	}
+	// nanote-git
 break;
 
 case 'sitemap.xml':
@@ -2284,7 +2310,6 @@ else if(!isset($_v['p']) || $mode=='list')
 		{
 			//$j=1;
 			$j=0;
-
 			while($j < $pgs)
 			{
 				$pn = $j + 1;
@@ -2293,7 +2318,7 @@ else if(!isset($_v['p']) || $mode=='list')
 					$_s['pglk'] .= '<a href='.slk($j*$_s['ppp']).'><strong>'.$pn.'</strong></a> ';
 				}
 				else
-				{
+				{	$rel='';
 					if ($j*$_s['ppp'] == $sp + $_s['ppp']) $rel = ' rel="next"';
 					if ($j*$_s['ppp'] == $sp - $_s['ppp']) $rel = ' rel="previous"';
 					$_s['pglk'] .= '<a href='.slk($j*$_s['ppp']).$rel.'>'.$pn.'</a> ';
@@ -2448,3 +2473,5 @@ if(isset($anons) && $_s['autometa'])
 }
 
 include $_s['tpd'].'/index.php';
+
+?>
