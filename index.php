@@ -1918,6 +1918,7 @@ if (@trim($n = $_v['title']) && @trim($t = $_v['text']))
 		else
 		{
 			$t = '<'.$_s['pgt'].'>'.$n.'</'.$_s['pgt'].'>'.$t;
+			$n = str_replace('-','_', $n);
 			$n = rus2lat($n);//date('dMY_hmi');
 		}
 
@@ -2208,7 +2209,7 @@ function blog($mode=false) {
 		}
 	}
 
-if((!isset($_v['act']) && preg_match("/^([a-zA-Z0-9_.]{3,60})$/",$_v['pg'],$m)) && $mode!='list')
+if((!isset($_v['act']) && preg_match("/^([+a-zA-Z0-9_.]{3,60})$/",$_v['pg'],$m)) && $mode!='list')
 {
 	if($doc)
 	{
