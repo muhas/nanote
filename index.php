@@ -1686,7 +1686,14 @@ case 't':
 				var searchtpl = \'' . $_l['search'] . '\';
 				var notify_msg = "Найдено ' . sizeof($psts) . ' записей.";
 			</script>';
-
+	if(isset($plugins['template.index']))
+	{
+		rsort($plugins['template.index']);
+		foreach($plugins['template.index'] as $func)
+		{
+			if(function_exists($func)) $func();
+		}
+	}
 	// меняем заголовок и прочее сео
 	$_s['title'] = $_s['bname'].' - '.implode(', ', $tnames);
 	$_intpl['inheader'] .= '<meta name="robots" content="noindex,follow,noodp,noydir" />'."\n";
@@ -2159,7 +2166,14 @@ case 'sw':
 	// меняем заголовок и прочее сео
 	$_s['title'] = $_s['bname'].' - '.$_v['sw'].' - '.@ceil($_v['sp']/$_s['ppp']+1);
 	$_intpl['inheader'] .= '<meta name="robots" content="noindex,follow,noodp,noydir" />'."\n";
-
+	if(isset($plugins['template.index']))
+	{
+		rsort($plugins['template.index']);
+		foreach($plugins['template.index'] as $func)
+		{
+			if(function_exists($func)) $func();
+		}
+	}
 	include $_s['tpd'].'/index.php';
 	exit();
 break;
