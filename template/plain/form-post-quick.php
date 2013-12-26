@@ -43,7 +43,7 @@
 			}
 		}
 ?>
-</select><select name="category">
+</select><select name="category[]">
 <option value="">категория</option>
 <?php
 	if(isset($_loc['catid']))

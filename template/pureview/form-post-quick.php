@@ -25,7 +25,7 @@
 <span style="float: left; width: 49%">
 
 <span style="padding: 5px;">
-<select name="category">
+<select name="category[]">
 <option value="">категория</option>
 <?php
 	if(isset($_loc['catid']))
