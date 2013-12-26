@@ -24,7 +24,7 @@ while (false !== ($en = $d->read()))
                         $_loc['alias'][$lat] = $id;
                         $_loc['alias'][$id] = $lat;
                 }
-                $_loc['cat'][$id] = explode(',', $cats);
+                $_loc['cat'][$id] = array(explode(',', $cats));
         // удаление исходника
         unlink($dir.'/'.$en);
         }

@@ -43,7 +43,7 @@ input[type="file"] { width: 200px; }
 
 <?php if($_v['act']=='ed'): ?>
 <span style="padding: 5px;">
-<select name="category">
+<select name="category[]">
 <option value="">категория</option>
 <?php
 	if(isset($_loc['catid']))

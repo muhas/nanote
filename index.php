@@ -912,7 +912,8 @@ class Image_Processor {
 			$_loc['draft'][$_v['p']] = isset($_v['draft']) ? 1 : 0;
 
 			// категория(и)
-			$_loc['cat'][$_v['p']] = array(explode(',', $_v['category']));
+			//$_loc['cat'][$_v['p']] = array(explode(',', $_v['category']));
+			$_loc['cat'][$_v['p']] = array($_v['category']);
 
 			// сохраняем поля
 			foreach($_v as $ke=>$va)
@@ -1189,14 +1190,13 @@ class Image_Processor {
 
 	function catslist($cats=false, $td='<a href="%link%" rel="nofollow">%name%</a>', $i=',') {
 	global $_s, $_l, $_v, $_loc;
-
 		if(is_array($cats))
 		{
-			foreach($cats as $v)
-			{
-				if(isset($_loc['catid'][$v[0]]))
-				{
+			foreach($cats[0] as $v)
+			{ 				if(isset($_loc['catid'][$v[0]]))
+				{	
 					$pst['cats_links'][] = str_replace(array('%link%', '%name%'), array(ctlk($v[0]), $_loc['catid'][$v[0]][1]), $td);
+					//$pst['cats_links'][] = str_replace(array('%link%', '%name%'), array(ctlk($v), $_loc['catid'][$v][1]), $td);
 				}
 			}
 			if(isset($pst['cats_links'])) return implode($i, $pst['cats_links']);

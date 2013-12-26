@@ -1,4 +1,4 @@
-<?php if(isset($_v['p'])) echo '<div id="navi"><a class="next" href="'.$nav['n']['lnk'].'">&laquo; '.$nav['n']['sub'].'</a> <a class="prev" href="'.$nav['p']['lnk'].'">'.$nav['p']['sub'].' &raquo;</a></div>'; ?>
+<?php echo "<pre>";print_r($v);echo "</pre>"; if(isset($_v['p'])) echo '<div id="navi"><a class="next" href="'.$nav['n']['lnk'].'">&laquo; '.$nav['n']['sub'].'</a> <a class="prev" href="'.$nav['p']['lnk'].'">'.$nav['p']['sub'].' &raquo;</a></div>'; ?>
 <div class="post shadow">
 <h2><a name="more" href="#more"><?php echo $pst['title']; ?></a> <?php echo $pst['ed']; ?></h2>
 <div><?php echo $pst['text']; ?></div>
