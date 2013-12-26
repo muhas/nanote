@@ -1,30 +1,37 @@
 <?php
-//txtimport:импорт записей .txt записей из директории data//
-//0.1,Zorg//
+//txtimport:импорт записей .txt из директории data//
 
+//0.2,Zorg & muhas//
+$plugins['action.txtimport'][] = 'txtimport_help';
 $dir = 'data';
 $d = dir($dir);
 
 while (false !== ($en = $d->read()))
 {
-	if(substr($en,0,1) != '.' && strstr($en, '.txt'))
-	{
-		$content = file_get_contents($dir.'/'.$en);
-		list($title, $text) = explode("\n", $content, 2);
-		$id = (time() + rand(0, 2*24*60*60));
-		fsave($_POST['datadir'].'/'.$id,'w+', $title."\n".$text."\n[comments]\n");
-		$_loc['comments'][$id] = 0;
-		$_loc['draft'][$id] = 0;
+        if(substr($en,0,1) != '.' && strstr($en, '.txt'))
+        {
+                $content = file_get_contents($dir.'/'.$en);
+                list($title, $text) = explode("\n", $content, 2);
+                list($title, $cats) = explode("|.|", $title, 2);
+                $id = (time() + rand(0, 2*24*60*60));
+                fsave($_POST['datadir'].'/'.$id,'w+', $title."\n".$text."\n[comments]\n");
+                $_loc['comments'][$id] = 0;
+                $_loc['draft'][$id] = 0;
 
-		if(trim($title))
-		{
-			$lat = str_replace('_', '-', rus2lat(clean($title)));
-			$_loc['alias'][$lat] = $id;
-			$_loc['alias'][$id] = $lat;
-		}
-	// удаление исходника
-	unlink($dir.'/'.$en);
-	}
+                if(trim($title))
+                {
+                        $lat = str_replace('_', '-', rus2lat(clean($title)));
+                        $_loc['alias'][$lat] = $id;
+                        $_loc['alias'][$id] = $lat;
+                }
+                $_loc['cat'][$id] = explode(',', $cats);
+        // удаление исходника
+        unlink($dir.'/'.$en);
+        }
 }
 $d->close();
 fsave($_POST['datadir'].'/.settings.local', 'w+', serialize($_loc));
+function txtimport_help() {
+        echo "<br><b>пример файла с категориями</b><br>title|.|catid через запятую<br>текст<br><b>пример файла без категорий</b><br>title<br>текст";
+        exit;
+}
