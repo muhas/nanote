@@ -1,6 +1,6 @@
 <?php
-//disqus:Сторонния комментарии с помощь системы disqus //
-//0.3.1,muhas//
+//disqus:Сторонния комментарии с помощь системы disqus protocol-independent//
+//0.3.2,zimniy//
 
 $plugins['template.post.list'][] = 'postmv';
 $plugins['template.post.single'][] = 'postmv';
@@ -29,11 +29,11 @@ var disqus_url = '<?php  echo $pst['link'];?>';
 var disqus_title = '<?php echo htmlspecialchars($pst['title']); ?>';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Включите пожалуйста JavaScript для просмотра комментариев и возможности их написания с помощью <a href="http://disqus.com/?ref_noscript">Disqus</a>.</noscript>	
+<noscript>Включите пожалуйста JavaScript для просмотра комментариев и возможности их написания с помощью <a href="//disqus.com/?ref_noscript">Disqus</a>.</noscript>	
 <?php	
 	$_loc['comments'][$_v['p']] = 0;
 	} 
@@ -45,10 +45,10 @@ function disquscomm() {
 var disqus_shortname = '".$_loc['disqus_shortname']."'; 
 var s = document.createElement('script'); s.async = true;
 s.type = 'text/javascript';
-s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
 document.getElementsByTagName('BODY')[0].appendChild(s);
 </script>";
-//<script async="" type="text/javascript" src="http://'.$_loc['disqus_shortname'].'.disqus.com/count.js"></script>
+//<script async="" type="text/javascript" src="//'.$_loc['disqus_shortname'].'.disqus.com/count.js"></script>
 }
 
 function disqus_conf() {
