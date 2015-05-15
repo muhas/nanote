@@ -1,6 +1,6 @@
 <?php
-//disqus:Сторонния комментарии с помощь системы disqus protocol-independent//
-//0.3.2,zimniy//
+//disqus:Сторонния комментарии с помощь системы disqus//
+//0.3.2,muhas & zimniy//
 
 $plugins['template.post.list'][] = 'postmv';
 $plugins['template.post.single'][] = 'postmv';
